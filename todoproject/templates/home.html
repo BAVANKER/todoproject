@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!--banner section starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>ToDo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br>
+<!--banner section ends-->
+<!--form section starts-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6"><br>
+            <form method="post" class="p-3 shadow">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="task" placeholder="Enter your Task" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="priority" placeholder="Enter your Task priority" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="date" name="date" placeholder="Enter your Task completion date" class="form-control">
+                </div>
+                <input type="submit" class="btn btn-success">
+            </form>
+        </div>
+
+<!--form section ends-->
+<!--theTODO section starts-->
+
+        <div class="col-md-6">
+            <h4 style="color:brown">Task to be completed</h4>
+            {% for i in task1 %}
+            <div class="shadow card">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p><b>{{i.priority}}</b></p>
+                    <p><b>{{i.date}}</b></p>
+                    <a class="btn btn-danger" href="{% url 'todoapp:delete' i.id %}">Done</a>
+                    <a class="btn btn-success" href="{% url 'todoapp:update' i.id %}">Update</a><br>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!--theTODO section ends-->

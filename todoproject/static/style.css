@@ -1,0 +1,19 @@
+.banner {
+color:White;
+background-color:MidnightBlue;
+height:200px;
+margin-bottom:50px;
+}
+
+.banner-text {
+
+left:51%;
+top:18%;
+position:absolute;
+transform:transform;
+
+}
+
+body {
+background-color:LemonChiffon;
+}
